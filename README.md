@@ -1,35 +1,52 @@
 # Work Packet Compiler (WPC)
 
-## Thesis: Governed Delegation
-The Work Packet Compiler proves a core architectural pattern for secure agentic AI: **Governed Delegation**.
+## Governed Delegation for Agentic AI
 
-A large model (the Compiler) may propose a complex objective and a structured launder of steps to achieve it. However, the model is not given authority. Instead, the proposed work is compiled into a **Work Packet** and passed through a **Deterministic Validator**.
+The Work Packet Compiler is a technical proof of **governed delegation**. It demonstrates a system where a large model may propose structured work, but a deterministic policy decides what can execute, a constrained executor performs only validated steps, and receipts prove the delegation chain.
 
-The system ensures:
-1. **The model may propose work.**
-2. **The router grants permissions.**
-3. **The executor follows only validated packets.**
-4. **The human approves exceptions.**
-5. **The receipt proves the chain.**
+### The Thesis
+In an agentic system, the "Intelligence" (the model) and the "Authority" (the permissions) must be decoupled. The model should propose a plan, but a separate, deterministic validator must authorize it.
 
-## WPC-1 Objectives
-The first phase focuses on the **Contract and Validator**. It proves that no matter what a large model proposes, it cannot grant itself permissions or execute forbidden actions.
+### WPC-1: Contract + Validator
+Phase 1 proves the **Authorization Boundary**. It ensures that a model cannot grant itself permissions, execute forbidden actions, or be "dishonest" about what it intends to do.
 
-### Core Constraints
-- **Zero Implicit Trust:** No action in a work packet is executed unless it is explicitly permitted by the independent Router.
-- **Fail-Closed:** Any malformed packet, privilege escalation attempt, or unknown action results in immediate abortion.
-- **Auditability:** Every attempted execution generates a receipt documenting the delegation and validation chain.
+**Core Workflow:**
+`Propose (Model)` $\rightarrow$ `Validate (Deterministic)` $\rightarrow$ `Execute (Constrained)` $\rightarrow$ `Audit (Receipt)`
+
+### Engineering Proof
+- **Schema Rigor**: Pydantic-enforced Work Packet contract.
+- **Deterministic Routing**: Independent authority for permission grants.
+- **Boundary Validation**: Multi-stage rejection for privilege escalation, forbidden actions, and dishonest steps.
+- **Constrained Execution**: A "boring" executor that only runs validated, pre-approved logic.
+- **Auditability**: Every execution attempt emits a JSON receipt proving the delegation chain.
+
+### Implementation Status
+| Component | Status | Proof |
+|:---|:---:|:---|
+| **WorkPacket Schema** | ✅ | Pydantic contract |
+| **WorkRouter** | ✅ | Independent permission authority |
+| **WorkPacketValidator** | ✅ | Deterministic rejection logic |
+| **Constrained Executor** | ✅ | Bounded step execution |
+| **Audit Receipts** | ✅ | Delegation chain records |
+| **Boundary Tests** | ✅ | 20/20 tests passing |
+
+---
 
 ## Project Structure
 ```
 work-packet-compiler/
 ├── app/
-│   ├── schemas.py    # Pydantic models for the Work Packet contract
-│   ├── validator.py   # Deterministic logic to reject invalid/dangerous packets
-│   ├── router.py      # The authority that defines granted permissions
-│   ├── executor.py    # Constrained environment for executing validated steps
+│   ├── schemas.py    # Work Packet contract
+│   ├── validator.py   # Deterministic rejection logic
+│   ├── router.py      # Permission authority
+│   ├── executor.py    # Constrained executor
 │   ├── receipt.py     # Audit trail generation
-│   └── main.py       # Entry point and demo
-├── fixtures/         # JSON examples of valid and malicious packets
-└── tests/            # Boundary tests for the validator and router
+│   └── main.py       # Demo pipeline
+└── tests/            # Boundary tests (Schema, Router, Validator, Executor, Pipeline)
 ```
+
+## Related Proofs
+This project is part of a broader agentic AI safety architecture:
+- [EQ Gateway](https://github.com/andrewdhannah/EQ-Gateway) — Context Boundary / Privacy Firewall
+- [Work Packet Compiler](https://github.com/andrewdhannah/work-packet-compiler) — Action Boundary / Governed Delegation (This project)
+- [Agentic OS Proof](https://github.com/andrewdhannah/agentic-os-proof) — Integrated la la l la la Integrated Governance Runtime

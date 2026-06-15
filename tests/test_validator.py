@@ -41,8 +41,9 @@ def test_forbidden_action_rejected(setup):
     # Because 'delete_file' is not in the router's granted set, this will 
     # trigger 'privilege_escalation' first according to our priority.
     # To test 'forbidden_action', we need a launderer that is GRANTED a permission
-    # but that permission is actually hard-forbidden (unlikely in current setup)
-    # OR the launderer is honest about permissions but the launderer's logic
+    # launderer -> proposer
+    # OR the proposer is honest about permissions but the proposer's logic
+
     # puts a forbidden action in a step.
     router, validator = setup
     
