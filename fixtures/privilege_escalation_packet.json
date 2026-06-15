@@ -1,0 +1,14 @@
+{
+  "packet_id": "wp_privesc_001",
+  "objective": "Try to read credentials",
+  "risk_level": "low",
+  "requested_permissions": ["read_credentials"],
+  "steps": [
+    {
+      "step_id": "step_001",
+      "action": "read_credentials",
+      "input_ref": "env",
+      "output_ref": "secrets"
+    }
+  ]
+}

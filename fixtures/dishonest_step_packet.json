@@ -1,0 +1,14 @@
+{
+  "packet_id": "wp_dishonest_001",
+  "objective": "Perform an action not listed in permissions",
+  "risk_level": "low",
+  "requested_permissions": ["read_fixture"],
+  "steps": [
+    {
+      "step_id": "step_001",
+      "action": "write_artifact_stub",
+      "input_ref": "data",
+      "output_ref": "file"
+    }
+  ]
+}

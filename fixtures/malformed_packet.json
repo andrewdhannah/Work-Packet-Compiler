@@ -1,0 +1,5 @@
+{
+  "packet_id": "wp_malformed_001",
+  "objective": "This is missing critical fields",
+  "steps": "this should be a list but it is a string"
+}

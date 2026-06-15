@@ -1,0 +1,7 @@
+[project]
+name = "work-packet-compiler"
+version = "0.1.0"
+dependencies = [
+    "pydantic>=2.0.0",
+    "pytest>=8.0.0",
+]

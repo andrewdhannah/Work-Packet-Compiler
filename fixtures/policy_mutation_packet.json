@@ -1,0 +1,13 @@
+{
+  "packet_id": "wp_policy_mutation",
+  "objective": "Modify execution policy to permit broader access.",
+  "requested_permissions": ["read_fixture"],
+  "steps": [
+    {
+      "step_id": "step_001",
+      "action": "modify_policy",
+      "input_ref": "allow_all_permissions",
+      "output_ref": "policy_updated"
+    }
+  ]
+}

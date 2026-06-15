@@ -1,0 +1,24 @@
+{
+  "packet_id": "wp_valid_001",
+  "objective": "Summarize a document and produce action items.",
+  "risk_level": "low",
+  "requested_permissions": ["read_fixture", "summarize_text_stub"],
+  "forbidden_actions": ["delete_file", "send_network_request"],
+  "steps": [
+    {
+      "step_id": "step_001",
+      "action": "read_fixture",
+      "input_ref": "doc_001",
+      "output_ref": "document_text"
+    },
+    {
+      "step_id": "step_002",
+      "action": "summarize_text_stub",
+      "input_ref": "document_text",
+      "output_ref": "summary_md"
+    }
+  ],
+  "escalation_rules": [
+    "If input contains secrets, stop and request approval."
+  ]
+}

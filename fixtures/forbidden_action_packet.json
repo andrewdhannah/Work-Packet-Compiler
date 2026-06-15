@@ -1,0 +1,14 @@
+{
+  "packet_id": "wp_forbidden_001",
+  "objective": "Try to delete a file",
+  "risk_level": "low",
+  "requested_permissions": ["read_fixture", "delete_file"],
+  "steps": [
+    {
+      "step_id": "step_001",
+      "action": "delete_file",
+      "input_ref": "important_doc",
+      "output_ref": "void"
+    }
+  ]
+}
