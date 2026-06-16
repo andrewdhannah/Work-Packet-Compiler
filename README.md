@@ -49,4 +49,4 @@ work-packet-compiler/
 This project is part of a broader agentic AI safety architecture:
 - [EQ Gateway](https://github.com/andrewdhannah/EQ-Gateway) — Context Boundary / Privacy Firewall
 - [Work Packet Compiler](https://github.com/andrewdhannah/work-packet-compiler) — Action Boundary / Governed Delegation (This project)
-- [Agentic OS Proof](https://github.com/andrewdhannah/agentic-os-proof) — Integrated la la l la la Integrated Governance Runtime
+- [Agentic OS Proof](https://github.com/andrewdhannah/agentic-os-proof) — Integrated Governance Runtime

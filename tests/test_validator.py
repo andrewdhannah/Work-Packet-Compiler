@@ -40,10 +40,9 @@ def test_forbidden_action_rejected(setup):
     # Case: A packet that requests an action that is hard-forbidden.
     # Because 'delete_file' is not in the router's granted set, this will 
     # trigger 'privilege_escalation' first according to our priority.
-    # To test 'forbidden_action', we need a launderer that is GRANTED a permission
-    # launderer -> proposer
+    # To test 'forbidden_action', we need a proposer that is GRANTED a permission
+    # but that permission is actually hard-forbidden.
     # OR the proposer is honest about permissions but the proposer's logic
-
     # puts a forbidden action in a step.
     router, validator = setup
     
@@ -89,6 +88,6 @@ def test_policy_mutation_rejected(setup):
     result = validator.validate(packet)
     assert result.is_valid is False
     # Depending on order, this could be privilege_escalation (if not in router) 
-    # or forbidden_action. a a la the logic in validator.py, 
+    # or forbidden_action. Per the logic in validator.py, 
     # it first checks requested permissions against the router.
     assert result.reason in ["privilege_escalation", "forbidden_action"]
